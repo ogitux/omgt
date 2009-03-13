@@ -1,9 +1,9 @@
 <?php
 /**
- * Tournament.class.php
+ * Omg.class.php
  */
 
-class Tournament 
+class Omg 
 {
 	var $db;
 	
