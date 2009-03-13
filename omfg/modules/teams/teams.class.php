@@ -4,20 +4,16 @@
  */
 class teams extends Omg
 {
-	public function GetAllTeams($wheres=NULL, $orders="name")
+	public function GetAllTeams()
 	{
-		$query	= "SELECT id, name FROM teams ";
-		if ($wheres)
-		{
-			$query .= "WHERE $wheres";
-		}
-		$query .= "ORDER BY $orders";
+		$query	= "SELECT id, name FROM teams ORDER BY name";
 		$result	= $this->db->query($query);
 		$return = $result->fetchAll(PDO::FETCH_ASSOC);
 		return $return;	
 	}
 	public function SelectTeam($attributes="")
 	{
+		$teams	= array();
 		foreach ($this->GetAllTeams() as $team)
 		{
 			$teams[$team["id"]] = $team["name"];
@@ -27,15 +23,15 @@ class teams extends Omg
 	}
 	public function CreateTeam($game, $name, $tag, $players)
 	{
-		$insert  	= "INSERT INTO teams (game, name, tag, date_creation) ";
+		$insert  	= "INSERT INTO teams (game, name, tag, created) ";
 		$insert		.= "VALUES ('$game', '$name', '	$tag', NOW())";
 		$result		= $this->db->query($insert);		
 		$last_id	= $this->db->lastInsertId();
 		
 		foreach ($players as $player)
 		{
-			$insert_player  = "INSERT INTO team_players (team, player) ";
-			$insert_player .= "VALUES ('$last_id', '$player')";
+			$insert_player  = "INSERT INTO team_players (team, player, created) ";
+			$insert_player .= "VALUES ('$last_id', '$player', NOW())";
 			$result_player = $this->db->query($insert_player);		
 		}
 		

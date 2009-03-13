@@ -1,9 +1,13 @@
-<h1>Agregar equipo a torneo</h1>
+<h1>Agregar equipo/jugador a torneo</h1>
 
 <div>
-Cupos de equipos que restan:
-<form name="event_add_team" action="?s=events&a=save_event_team" method="post">
+<form name="event_add_team" action="?s=events&a=save_event_team&event=<?=$event?>&jp=<?=$team_info["just_players"]?>" method="post">
+	<?php if ($team_info["just_players"]==1){ ?>
+	<label>Jugador<br /><?=$MyPes->players->SelectPlayer()?></label>
+	<label><input type="submit" value="Agregar jugador" /></label>
+	<?php }else{ ?>
 	<label>Equipo<br /><?=$MyPes->teams->SelectTeam()?></label>
 	<label><input type="submit" value="Agregar equipo" /></label>
+	<?php } ?>
 </form>
 </div>
