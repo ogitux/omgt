@@ -1,0 +1,22 @@
+<h3>DASHBOARD</h3>
+<hr />
+<div>Torneos en curso</div>
+<ul>
+	<?php foreach ($MyPes->events->GetAllEvents() as $event): ?>
+	<li><?=$event[name]?></li>
+	<?php endforeach; ?>
+</ul>
+<hr />
+<div>Jugadores</div>
+<ul>
+	<?php foreach ($MyPes->players->GetAllPlayers() as $player): ?>
+	<li><?=$player['nick']?></li>
+	<?php endforeach; ?>
+</ul>
+<hr />
+<div>Equipos</div>
+<ul>
+	<?php foreach ($MyPes->teams->GetAllTeams() as $team): ?>
+	<li><?=$team['name']?></li>
+	<?php endforeach; ?>
+</ul>
