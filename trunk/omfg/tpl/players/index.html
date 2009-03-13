@@ -1,0 +1,11 @@
+<h3>JUGADORES</h3>
+<div>
+<a href="?s=players&a=add">Registrar un jugador</a>
+</div>
+<hr />
+<div>
+<ul>
+<?php foreach ($MyPes->players->GetAllPlayers() as $player): ?>
+	<li><?=$player['nick']?></li>
+<?php endforeach; ?>
+</ul>

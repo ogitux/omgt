@@ -1,0 +1,9 @@
+<h1>Agregar equipo a torneo</h1>
+
+<div>
+Cupos de equipos que restan:
+<form name="event_add_team" action="?s=events&a=save_event_team" method="post">
+	<label>Equipo<br /><?=$MyPes->teams->SelectTeam()?></label>
+	<label><input type="submit" value="Agregar equipo" /></label>
+</form>
+</div>

@@ -1,0 +1,10 @@
+<h3>ESCENARIOS</h3>
+<div>
+<a href="?s=scenarios&a=add">Crear Escenario</a>
+</div>
+<hr />
+<ul>
+	<?php foreach ($MyPes->scenarios->GetAllScenarios() as $scenario): ?>
+	<li><?=$scenario['game']?> : <?=$scenario['name']?></li>
+	<?php endforeach; ?>
+</ul>

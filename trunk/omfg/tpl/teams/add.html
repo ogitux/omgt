@@ -1,0 +1,11 @@
+<h1>Crear un equipo</h1>
+
+<div>
+<form name="add_team" id="add_team" action="?s=teams&a=save" method="post">
+	<label>Nombre Equipo<br /><input type="text" name="team_name" id="team_name" size="30"></label>
+	<label>Tag<br /><input type="text" name="team_tag" id="team_tag" size="20" /></label>
+	<label>Juego<br /><?=$MyPes->games->SelectGame()?></label>
+	<label>Jugadores del equipo<br/><?=$MyPes->players->SelectPlayer('multiple="multiple" size="10"');?></label>
+	<label><input type="submit" value="Crear equipo" /></label>
+</form>
+</div>
