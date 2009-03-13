@@ -2,7 +2,7 @@
 /**
  * teams.class.php
  */
-class teams extends Tournament
+class teams extends Omg
 {
 	public function GetAllTeams($wheres=NULL, $orders="name")
 	{

@@ -2,7 +2,7 @@
 /**
  * Events.class.php
  */
-class events extends Tournament
+class events extends Omg
 {
 	public function GetAllEvents()
 	{

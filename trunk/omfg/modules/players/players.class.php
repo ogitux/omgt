@@ -2,7 +2,7 @@
 /**
  * players.class.php
  */
-class players extends Tournament
+class players extends Omg
 {
 	public function GetAllPlayers()
 	{

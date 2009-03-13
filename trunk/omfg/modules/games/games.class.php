@@ -2,7 +2,7 @@
 /**
  * Games.class.php
  */
-class games extends Tournament
+class games extends Omg
 {
 	public function SelectGame($attributes="")
 	{

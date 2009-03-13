@@ -2,7 +2,7 @@
 /**
  * scenarios.class.php
  */
-class scenarios extends Tournament
+class scenarios extends Omg
 {
 	public function GetAllScenarios()
 	{

@@ -4,12 +4,12 @@
  */
 // Configuraciones
 include("includes/config.php");
-require_once("includes/tournament.class.php");
+require_once("includes/omg.class.php");
 require_once("includes/functions.php");
 
 
 // Clase
-$MyPes = new Tournament();
+$MyPes = new Omg();
 $MyPes->LoadModules();
 
 // Variables
