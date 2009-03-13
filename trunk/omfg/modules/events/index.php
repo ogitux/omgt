@@ -13,7 +13,9 @@ switch ($action)
 		$tpl = TPL_DIR . "/events/add.html";
 		break;
 	case "add_team":
-		$tpl = TPL_DIR . "/events/add_team.html";
+		$event		= $_GET["event"];
+		$tpl 		= TPL_DIR . "/events/add_team.html";
+		$team_info	= $MyPes->events->GetEventInfo($event);
 		break; 
 	case "save_event":
 		$tpl		= TPL_DIR . "/message.html";
@@ -25,13 +27,33 @@ switch ($action)
 		$teams		= $_POST["teams"];
 		$players	= $_POST["players_by_team"];
 		$insert		= $MyPes->events->CreateEvent($name, $type, $game, $start, $finish, $teams, $players);
-		if ($insert)
-		{
+		if ($insert) {
 			$message	 = "Evento creado exitosamente";
 			$redirection = "?";
 		} else {
 			$message	 = "Error al crear el evento";
 			$redirection = "?s=events&a=add";
+		}
+		break;
+	case "save_event_team":
+		$tpl			= TPL_DIR . "/message.html";
+		$redirection = "?s=events";
+		
+		$event			= $_GET["event"];
+		$just_players	= $_GET["jp"];
+		if ($just_players==1) {
+			$player		= $_POST["players"];
+			$insert		= $MyPes->events->EventAddPlayer($event, $player);
+		} else {
+			$team		= $_POST["teams"];
+			$insert		= $MyPes->events->EventAddTeam($event, $team);
+		}
+		
+		if ($insert)
+		{
+			$message	 = "Jugador/Equipo agregado exitosamente";
+		} else {
+			$message	 = "Error al agregar";
 		}
 		break;
 } 

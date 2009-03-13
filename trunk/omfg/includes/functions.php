@@ -1,4 +1,17 @@
 <?php
+/**
+ * Functions
+ */
+
+
+/**
+ * get_section()
+ * Get the section and the action for the web
+ * 
+ * @param $section Site section
+ * @param $action Action from section
+ * @return void
+ */
 function get_section($section, $action)
 {
 	global $MyPes;
@@ -19,7 +32,14 @@ function get_section($section, $action)
 		include(DEFAULT_PAGE);
 	}
 }
-
+/**
+ * printr()
+ * Print preformated text and allow to exit the code
+ * 
+ * @param $text Not Formated Text
+ * @param $exit If exit is true then the function exit
+ * @return void
+ */
 function printr($text, $exit=NULL)
 {
 	echo "<pre>";

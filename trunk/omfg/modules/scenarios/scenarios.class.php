@@ -17,7 +17,7 @@ class scenarios extends Omg
 	
 	public function CreateScenario($name, $game, $description=NULL)
 	{
-		$insert  	= "INSERT INTO scenarios (name, game, description,date_creation) ";
+		$insert  	= "INSERT INTO scenarios (name, game, description, created) ";
 		$insert		.= "VALUES ('$name', '$game', '$description', NOW())";
 		$result		= $this->db->query($insert);		
 		$last_id	= $this->db->lastInsertId();

@@ -23,7 +23,7 @@ class players extends Omg
 	public function CreatePlayer($name, $nick, $email, $password)
 	{
 		$password	= md5($password);
-		$insert  	= "INSERT INTO players (name, nick, email, password, date_creation) ";
+		$insert  	= "INSERT INTO players (name, nick, email, password, created) ";
 		$insert		.= "VALUES ('$name', '$nick', '	$email', '$password', NOW())";
 		$result		= $this->db->query($insert);		
 		$last_id	= $this->db->lastInsertId();

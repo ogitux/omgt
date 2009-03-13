@@ -11,6 +11,13 @@ class events extends Omg
 		$return = $result->fetchAll(PDO::FETCH_ASSOC);
 		return $return;	
 	}
+	public function GetEventInfo($id)
+	{
+		$query	= "SELECT id, name, type, game, start_date, finish_date, phase, teams, players_by_team, just_players FROM events WHERE id='$id'";
+		$result	= $this->db->query($query);
+		$return = $result->fetchAll(PDO::FETCH_ASSOC);
+		return $return[0];
+	}
 	public function SelectEventType($attributes="")
 	{
 		global $event_types;
@@ -19,8 +26,24 @@ class events extends Omg
 	}
 	public function CreateEvent($name, $type, $game, $start, $finish, $teams, $players)
 	{
-		$insert  	= "INSERT INTO events (name, type, game, start_date, finish_date, creation_date, teams, players_by_team) ";
+		$insert  	= "INSERT INTO events (name, type, game, start_date, finish_date, created, teams, players_by_team) ";
 		$insert		.= "VALUES ('$name', '$type', '$game', '$start', '$finish', NOW(), '$teams', '$players')";
+		$result		= $this->db->query($insert);		
+		$last_id	= $this->db->lastInsertId();
+		$return		= ($last_id ? true : false);
+		return $return;
+	}
+	public function EventAddPlayer($event, $player)
+	{
+		$insert	= "INSERT INTO event_players (event, player, created) VALUES ('$event', '$player', NOW())";
+		$result		= $this->db->query($insert);		
+		$last_id	= $this->db->lastInsertId();
+		$return		= ($last_id ? true : false);
+		return $return;
+	}
+	public function EventAddTeam($event, $team)
+	{
+		$insert	= "INSERT INTO event_teams (event, team, created) VALUES ('$event', '$team', NOW())";
 		$result		= $this->db->query($insert);		
 		$last_id	= $this->db->lastInsertId();
 		$return		= ($last_id ? true : false);

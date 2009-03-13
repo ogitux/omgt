@@ -15,5 +15,11 @@ class games extends Omg
 		$select_games = $this->SelectBuild("game", $attributes, $games);
 		return $select_games;
 	}
+	public function SelectGameFormat($attributes="")
+	{
+		global $game_formats;
+		$select_game_formats = $this->SelectBuild("game_formats", $attributes, $game_formats);
+		return $select_game_formats;
+	}
 }
 ?>

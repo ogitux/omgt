@@ -5,10 +5,16 @@
 	<label>Nombre Evento <br /> <input type="text" name="event_name" id="event_name" size="45"></label>
 	<label>Tipo<br /><?= $MyPes->events->SelectEventType(); ?></label>
 	<label>Juego<br /><?= $MyPes->games->SelectGame(); ?></label>
+	<label>Formato<br /><?= $MyPes->games->SelectGameFormat(); ?></label>
 	<label>Fecha de inicio<br /><input type="text" name="event_start_at" id="event_start_at" /></label>
 	<label>Fecha de termino<br /><input type="text" name="event_finish_at" id="event_finish_at" /></label>
-	<label>Equipos a jugar<br /><input type="text" name="teams" id="teams" /></label>
-	<label>Jugadores por equipo<br /><input type="text" name="players_by_team" id="players_by_team" /></label> 
+	<div id="game_format_one">
+		<label>Cupos por jugador<br /><input type="text" name="teams" id="teams" /></label>
+	</div>
+	<div id="game_format_team">
+		<label>Cupos por equipo<br /><input type="text" name="teams" id="teams" /></label>
+		<label>Jugadores por equipo<br /><input type="text" name="players_by_team" id="players_by_team" /></label>
+	</div> 
 	<label><input type="submit" value="Crear torneo" /></label>
 </form>
 </div>
