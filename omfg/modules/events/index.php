@@ -13,9 +13,9 @@ switch ($action)
 		$tpl = TPL_DIR . "/events/add.html";
 		break;
 	case "add_team":
-		$event		= $_GET["event"];
-		$tpl 		= TPL_DIR . "/events/add_team.html";
-		$team_info	= $MyPes->events->GetEventInfo($event);
+		$event				= $_GET["event"];
+		$tpl 				= TPL_DIR . "/events/add_team.html";
+		$team_info			= $MyPes->events->GetEventInfo($event);
 		break; 
 	case "save_event":
 		$tpl		= TPL_DIR . "/message.html";

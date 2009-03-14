@@ -13,10 +13,20 @@ class events extends Omg
 	}
 	public function GetEventInfo($id)
 	{
-		$query	= "SELECT id, name, type, game, start_date, finish_date, phase, teams, players_by_team, just_players FROM events WHERE id='$id'";
+		$query	= "SELECT e.id, e.name, e.type, e.game, e.start_date, e.finish_date, e.phase, e.teams, e.players_by_team, e.just_players, COUNT(ep.player) as 'event_players', COUNT(et.team) as 'event_teams' " .
+				  "FROM events e " .
+				  "LEFT OUTER JOIN event_players ep ON ep.event=e.id " . 
+				  "LEFT OUTER JOIN event_teams et ON ep.event=e.id " .
+				  "WHERE e.id='$id'";
 		$result	= $this->db->query($query);
 		$return = $result->fetchAll(PDO::FETCH_ASSOC);
 		return $return[0];
+	}
+	public function GetEventParticipants($event)
+	{
+		$team_info			= $this->GetEventInfo($event);
+		$event_participants	= ($team_info["event_teams"] > 0 ? $team_info["event_teams"] : $team_info["event_players"] );
+		return $event_participants;
 	}
 	public function SelectEventType($attributes="")
 	{

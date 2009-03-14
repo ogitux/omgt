@@ -6,6 +6,6 @@
 <?php foreach ($MyPes->events->GetAllEvents() as $event): ?>
 	<div>
 		<b><?=$event['name']?></b><br/>
-		0 equipos inscritos de <?=$event['teams']?> [ <a href="?s=events&a=add_team&event=<?=$event['id']?>">Inscribir Equipos</a> ] 
+		<?=$MyPes->events->GetEventParticipants($event["id"]); ?> equipos/jugadores inscritos de <?=$event['teams']?> [ <a href="?s=events&a=add_team&event=<?=$event['id']?>">Inscribir Equipos</a> ] 
 	</div>
 <?php endforeach; ?>
