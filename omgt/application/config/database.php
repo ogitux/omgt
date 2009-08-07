@@ -30,8 +30,8 @@ $config['default'] = array
 	'connection'    => array
 	(
 		'type'     => 'mysql',
-		'user'     => 'root',
-		'pass'     => 'sirduke',
+		'user'     => 'omgt',
+		'pass'     => 'omgt',
 		'host'     => 'localhost',
 		'port'     => FALSE,
 		'socket'   => FALSE,
