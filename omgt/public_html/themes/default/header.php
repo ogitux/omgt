@@ -24,7 +24,7 @@
 		<ol>
 			<li>
 				<a href="/index.php/">Home</a>
-				<small>Team Home Page</small>
+				<small>Your team page</small>
 			</li>
 			<li>
 				<a href="/index.php/tournament/">Tournaments</a>
