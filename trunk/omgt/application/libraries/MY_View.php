@@ -11,8 +11,7 @@ class View extends View_Core {
 		if ($type == NULL)
 		{
 			// Load the filename and set the content type
-			$this->kohana_filename = '/home/hypn/www/alpha/omgt/public_html'.Kohana::config('core.site_domain').'themes/default/'.$name.EXT;
-			//$this->kohana_filename = Kohana::find_file('views', $name, TRUE);
+			$this->kohana_filename = DOCROOT.Kohana::config('core.site_domain').'themes/'.Kohana::config('omgt.theme').'/'.$name.EXT;
 			$this->kohana_filetype = EXT;
 		}
 		else
@@ -22,7 +21,6 @@ class View extends View_Core {
 				throw new Kohana_Exception('core.invalid_filetype', $type);
 
 			// Load the filename and set the content type
-			
 			$this->kohana_filename = Kohana::find_file('views', $name, TRUE, $type);
 			$this->kohana_filetype = Kohana::config('mimes.'.$type);
 
