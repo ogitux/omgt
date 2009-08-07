@@ -6,4 +6,4 @@
 	<div class="span-3 first">End Date</div><div class="span-13 last"><input name="end_date" id="end_date" value="" class="date-picker" /></div>
 	<div class="span-3 first">&nbsp;</div><div class="span-13 last"><input type="submit" value="Save Tournament"  /></div>
 </form>
-<a href="/index.php/tournament/">Regresar</a>
+<a href="/tournament/">Regresar</a>
