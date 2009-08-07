@@ -2,9 +2,13 @@
 class Omgt_Controller extends Controller {
 
 	public $theme;
+	public $session;
 
 	public function __construct()
 	{
+		$this->session = Session::instance();
+		$this->session->create();
+		
 		$this->theme = new View('index');
 		$this->theme->header	= new View('header');
 		$this->theme->content	= '';
@@ -14,7 +18,7 @@ class Omgt_Controller extends Controller {
 
 	public function index()
 	{
-		$this->theme->content = new View('main');
+		$this->theme->content = new View('home');
 		$this->theme->render(TRUE);		
 	}
 	
