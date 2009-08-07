@@ -23,15 +23,15 @@
 	<div id="menu" class="span-16">
 		<ol>
 			<li>
-				<a href="/index.php/">Home</a>
+				<a href="/">Home</a>
 				<small>Your team page</small>
 			</li>
 			<li>
-				<a href="/index.php/tournament/">Tournaments</a>
+				<a href="/tournament/">Tournaments</a>
 				<small>Manage your events</small>
 			</li>
 			<li>
-				<a href="/index.php/game/">Games</a>
+				<a href="/game/">Games</a>
 				<small>Configure games</small>
 			</li>
 		</ol>

@@ -3,4 +3,4 @@
 Name : <input type="text" id="name" name="name" value="" />
 <input type="submit" value="Save"  />
 </form>
-<a href="/index.php/game/">Regresar</a>
+<a href="/game/">Regresar</a>
