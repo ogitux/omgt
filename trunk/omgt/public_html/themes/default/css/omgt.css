@@ -1,0 +1,70 @@
+/** Default **/
+body {
+	background-color:#344353;
+	color:#6F869E;
+	font-family:Helvetica,"Helvetica Neue",Arial,Geneva,sans-serif;
+}
+
+a, a:hover {
+	color:#6F869E;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#DEE8F3;
+}
+
+/** Classes **/
+.clear {
+	clear:both;
+}
+
+/** ID's **/
+#header {
+	color:#DEE8F3;
+	font-size: 30px;
+	font-weight:bold;
+}
+#menu {
+	overflow:hidden;
+	background-color: #DEE8F3;
+}
+
+#menu ol {
+	list-style-image:none;
+	list-style-position:outside;
+	float: left;
+}
+
+#menu ol li {
+	border-right:1px solid #666666;
+	float:left;
+	list-style-type:none;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#menu ol li a {
+	display:block;
+	font-weight:bold;
+	text-decoration:none;
+	width:140px;
+	margin: auto;
+}
+
+#menu ol li a:hover {
+	color: #444;
+}
+
+#menu ol li a small {
+	display:block;
+	line-height:0;
+}
+
+#footer {
+	background-color: #444;
+	padding-top:10px;
+	padding-bottom:10px;
+	color:#ddd;
+	font-size:12px;
+}
