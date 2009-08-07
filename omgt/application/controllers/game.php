@@ -58,15 +58,16 @@ class Game_Controller extends Omgt_Controller {
 			$game->created	= date('Y-m-d h:i:s');
 			if ($game->validate($post)) {
 				$game->save();	
-				echo 'Game Saved!';
+				$this->session->set_flash('messages',array('type' => 'success', 'msg' => 'Game Saved!'));
 			}
 			else {
-				echo '<ul>';
+				$msg = '<ul>';
 				foreach ($post->errors() as $key => $value) 
 				{
-					echo '<li><strong>'.$key.' :</strong> '.$value.'</li>';
+					$msg .= '<li><strong>'.$key.' :</strong> '.$value.'</li>';
 				}
-				echo '</ul>';
+				$msg .= '</ul>';
+				$this->session->set_flash('messages',array('type' => 'error', 'msg' => $msg));
 			}
 			
 		}
