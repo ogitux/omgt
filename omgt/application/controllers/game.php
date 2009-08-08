@@ -9,7 +9,7 @@ class Game_Controller extends Omgt_Controller {
 		$list = '<ol>';
 		foreach ($games as $game)
 		{
-			$list .= '<li>'.$game->name.' - (<a href="/index.php/game/edit/'.$game->id.'">Edit</a> - <a href="/index.php/game/delete/'.$game->id.'">Delete</a>)</li>';
+			$list .= '<li>'.$game->name.' - (<a href="/game/edit/'.$game->id.'">Edit</a> - <a href="/game/delete/'.$game->id.'">Delete</a>)</li>';
 		}
 		$list .= '</ol>';
 		
@@ -54,11 +54,13 @@ class Game_Controller extends Omgt_Controller {
 				$id = $post['id'];	
 			}
 			$game = ORM::factory('game', $id);
-			$game->name		=  $_POST['name'];
+			$game->name		= $post['name'];
 			$game->created	= date('Y-m-d h:i:s');
+			
 			if ($game->validate($post)) {
-				$game->save();	
-				$this->session->set_flash('messages',array('type' => 'success', 'msg' => 'Game Saved!'));
+				$game->save();
+				$msg = 'Game Saved!';
+				$type = 'success';	
 			}
 			else {
 				$msg = '<ul>';
@@ -67,9 +69,10 @@ class Game_Controller extends Omgt_Controller {
 					$msg .= '<li><strong>'.$key.' :</strong> '.$value.'</li>';
 				}
 				$msg .= '</ul>';
-				$this->session->set_flash('messages',array('type' => 'error', 'msg' => $msg));
+				$type = 'error';
 			}
-			
+			$this->session->set_flash('messages',array('type' => $type, 'msg' => $msg));
+			url::redirect('game');
 		}
 	}
 	
@@ -78,16 +81,20 @@ class Game_Controller extends Omgt_Controller {
 		if ($id) {
 			$game	= ORM::factory('game', $id);
 			if ($game->delete()) {
-				echo 'Game deleted';	
+				$msg	= 'Game deleted';
+				$type	= 'success';	
 			}
 			else {
-				echo 'Error deleting';
+				$msg	= 'Error deleting';
+				$type	= 'error';
 			}	
 		}
 		else {
-			echo 'There is no ID';
+			$msg	= 'There is no ID';
+			$type	= 'error';
 		}
-		echo '<br />';
-		echo '<a href="/index.php/game/">Regresar</a>';
+
+		$this->session->set_flash('messages',array('type' => $type, 'msg' => $msg));
+		url::redirect('game');
 	}
 }

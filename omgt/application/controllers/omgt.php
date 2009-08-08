@@ -2,12 +2,11 @@
 class Omgt_Controller extends Controller {
 
 	public $theme;
-	public $session;
 
 	public function __construct()
 	{
+		
 		$this->session = Session::instance();
-		$this->session->create();
 		
 		$this->theme = new View('index');
 		$this->theme->header	= new View('header');
