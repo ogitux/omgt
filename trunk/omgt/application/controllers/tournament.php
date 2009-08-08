@@ -9,7 +9,7 @@ class Tournament_Controller extends Omgt_Controller {
 		$list = '<ol>';
 		foreach ($games as $game)
 		{
-			$list .= '<li>'.$game->name.' - (<a href="/index.php/game/edit/'.$game->id.'">Edit</a> - <a href="/index.php/game/delete/'.$game->id.'">Delete</a>)</li>';
+			$list .= '<li>'.$game->name.' - (<a href="/tournament/edit/'.$game->id.'">Edit</a> - <a href="/tournament/delete/'.$game->id.'">Delete</a>)</li>';
 		}
 		$list .= '</ol>';
 		
@@ -20,6 +20,7 @@ class Tournament_Controller extends Omgt_Controller {
 	public function create()
 	{
 		$this->save();
+		
 		$games = ORM::factory('game');
 		$games_list	= $games->select_list('id','name');
 		
@@ -33,34 +34,47 @@ class Tournament_Controller extends Omgt_Controller {
 		if ($this->input->post()) {
 			$this->save($id);
 		}
-		$game = ORM::factory('game', $id);
 		
-		$view = new View('tournament/edit');
-		$view->id	= $game->id;
-		$view->name	= $game->name;
-		$view->render(TRUE);	
+		$tournament = ORM::factory('tournament', $id);
+
+		$games = ORM::factory('game');
+		$games_list	= $games->select_list('id','name');
+		
+		$this->theme->content = new View('tournament/edit');
+		$this->theme->content->id			= $tournament->id;
+		$this->theme->content->name			= $tournament->name;
+		$this->theme->content->select_game	= form::dropdown('tournament_game', $games_list, $tournament->game_id);
+		$this->theme->content->begin_date	= date('d-m-Y',strtotime($tournament->begin_date));
+		$this->theme->content->end_date		= date('d-m-Y',strtotime($tournament->end_date));
+		$this->theme->render(TRUE);	
 	}
 	
 	public function save($id = FALSE) 
 	{
 		if ($post = $this->input->post()) {
-			$tournament 			= ORM::factory('tournament', $post['id']);
-			$tournament->name		=  $_POST['name'];
+			$tournament 			= ORM::factory('tournament', $id);
+			$tournament->game_id	= $post['tournament_game'];
+			$tournament->name		= $post['name'];
+			$tournament->begin_date	= date('Y-m-d h:i:s',strtotime($post['begin_date']));
+			$tournament->end_date	= date('Y-m-d h:i:s',strtotime($post['end_date']));
 			$tournament->created	= date('Y-m-d h:i:s');
 			
 			if ($tournament->validate($post)) {
-				$game->save();	
-				echo 'Tournament Saved!';
+				$tournament->save();
+				$msg	= 'Tournament Saved!';
+				$type	= 'success';
 			}
 			else {
-				echo '<ul>';
+				$msg = '<ul>';
 				foreach ($post->errors() as $key => $value) 
 				{
-					echo '<li><strong>'.$key.' :</strong> '.$value.'</li>';
+					$msg .= '<li><strong>'.$key.' :</strong> '.$value.'</li>';
 				}
-				echo '</ul>';
+				$msg .= '</ul>';
+				$type	= 'error';
 			}
-			
+			$this->session->set('messages',array('type' => $type, 'msg' => $msg));
+			url::redirect('tournament');
 		}
 	}
 	
@@ -69,16 +83,20 @@ class Tournament_Controller extends Omgt_Controller {
 		if ($id) {
 			$tournament	= ORM::factory('tournament', $id);
 			if ($tournament->delete()) {
-				echo 'Tournament deleted';	
+				$msg	= 'Tournament deleted';
+				$type	= 'success'; 
 			}
 			else {
-				echo 'Error deleting';
+				$msg	= 'Error deleting';
+				$type	= 'error'; 
 			}	
 		}
 		else {
-			echo 'There is no ID';
+			$msg	= 'There is no ID';
+			$type	= 'error'; 
 		}
-		echo '<br />';
-		echo '<a href="/index.php/tournament/">Regresar</a>';
+		$this->session->set('messages',array('type' => $type, 'msg' => $msg));
+		url::redirect('tournament');
 	}
+	
 }
