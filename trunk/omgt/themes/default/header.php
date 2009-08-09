@@ -28,12 +28,8 @@
 				<small>Your team page</small>
 			</li>
 			<li>
-				<a href="/tournament/">Tournaments</a>
-				<small>Manage your events</small>
-			</li>
-			<li>
-				<a href="/game/">Games</a>
-				<small>Configure games</small>
+				<a href="/admin/">Admin</a>
+				<small>System Configuration</small>
 			</li>
 		</ol>
 	</div>

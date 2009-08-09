@@ -1,5 +1,5 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
-class Game_Controller extends Omgt_Controller {
+class Game_Controller extends Admin_Controller {
 	
 	public function index() 
 	{
@@ -9,7 +9,7 @@ class Game_Controller extends Omgt_Controller {
 		$list = '<ol>';
 		foreach ($games as $game)
 		{
-			$list .= '<li>'.$game->name.' - (<a href="/game/edit/'.$game->id.'">Edit</a> - <a href="/game/delete/'.$game->id.'">Delete</a>)</li>';
+			$list .= '<li>'.$game->name.' - (<a href="/admin/game/edit/'.$game->id.'">Edit</a> - <a href="/admin/game/delete/'.$game->id.'">Delete</a>)</li>';
 		}
 		$list .= '</ol>';
 		
