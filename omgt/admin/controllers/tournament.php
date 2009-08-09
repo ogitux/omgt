@@ -1,5 +1,5 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
-class Tournament_Controller extends Omgt_Controller {
+class Tournament_Controller extends Admin_Controller {
 	
 	public function index() 
 	{
