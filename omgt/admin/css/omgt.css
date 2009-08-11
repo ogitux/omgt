@@ -131,3 +131,16 @@ a:hover {
 	color:#ddd;
 	font-size:12px;
 }
+
+/** Table Grid **/
+.table-grid {
+}
+.table-row-center {
+	text-align:center;
+}
+.table-row-left {
+	text-align:left;
+}
+.table-row-right {
+	text-align:right;
+}

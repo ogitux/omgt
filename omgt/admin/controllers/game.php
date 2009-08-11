@@ -13,9 +13,27 @@ class Game_Controller extends Admin_Controller {
 		}
 		$game_list .= '</ol>';
 		
-		$scenarios = ORM::factory('scenario')->find_all();
-		grid::add_column('id');
-		grid::add_column('name');
+		$per_page = 25;
+		$page_num = $this->input->get('page', 1);
+		$offset   = ($page_num - 1) * $per_page;
+		
+		$scenarios = ORM::factory('scenario')->with('game')->limit($per_page, $offset)->orderby('id');
+		grid::add_column(array(
+			'field' => 'id',
+			'align'	=> 'center',
+			'label'	=> 'ID',
+		));
+		grid::add_column(array(
+			'field' => 'name',
+			'align'	=> 'left',
+			'label'	=> 'Name',
+		));
+		
+		grid::add_column(array(
+			'field' => 'game',
+			'align'	=> 'center',
+			'label'	=> 'Game',
+		));
 		
 /*		$scenario_list = '<ol>';
 		foreach ($scenarios as $scenario)
@@ -26,7 +44,7 @@ class Game_Controller extends Admin_Controller {
 */
 		
 		$this->theme->content->game_list = $game_list;
-		$this->theme->content->scenario_list = grid::create_grid($scenarios);
+		$this->theme->content->scenario_list = grid::create_grid($scenarios, $per_page);
 		$this->theme->render(TRUE);
 	}
 
