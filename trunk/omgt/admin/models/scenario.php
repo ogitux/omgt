@@ -1,8 +1,7 @@
 <?php
-class Game_Model extends ORM {
+class Scenario_Model extends ORM {
 	
-	protected $has_many		= array('scenarios');
-	protected $belongs_to	= array('tournament');
+	protected $belongs_to = array('game');
 	
 	public function __construct($id = FALSE)
 	{

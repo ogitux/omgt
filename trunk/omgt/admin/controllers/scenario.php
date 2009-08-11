@@ -1,45 +1,20 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
-class Game_Controller extends Admin_Controller {
+class Scenario_Controller extends Admin_Controller {
 	
 	public function index() 
 	{
-		$this->theme->content = new View('game/index');
-		
-		$games = ORM::factory('game')->find_all();
-		$game_list = '<ol>';
-		foreach ($games as $game)
-		{
-			$game_list .= '<li>'.$game->name.' - (<a href="/admin/game/edit/'.$game->id.'">Edit</a> - <a href="/admin/game/delete/'.$game->id.'">Delete</a>)</li>';
-		}
-		$game_list .= '</ol>';
-		
-		$scenarios = ORM::factory('scenario')->find_all();
-		$scenario_list = '<ol>';
-		foreach ($scenarios as $scenario)
-		{
-			$scenario_list .= '<li>'.$scenario->name.' - (<a href="/admin/scenario/edit/'.$scenario->id.'">Edit</a> - <a href="/admin/scenario/delete/'.$scenario->id.'">Delete</a>)</li>';
-		}
-		$scenario_list .= '</ol>';
-		
-		$this->theme->content->game_list = $game_list;
-		$this->theme->content->scenario_list = $scenario_list;
-		$this->theme->render(TRUE);
+		url::redirect('game');
 	}
 
-	public function view($id = FALSE) 
-	{
-		if (!$id) {
-		}
-		else {
-			
-		}
-	}	
-	
 	public function create()
 	{
 		$this->save();
 		
-		$this->theme->content = new View('game/create');
+		$games = ORM::factory('game');
+		$games_list	= $games->select_list('id','name');
+		
+		$this->theme->content = new View('scenario/create');
+		$this->theme->content->select_game = form::dropdown('game_id', $games_list);
 		$this->theme->render(TRUE);
 	}
 	
@@ -48,9 +23,9 @@ class Game_Controller extends Admin_Controller {
 		if ($this->input->post()) {
 			$this->save($id);
 		}
-		$game = ORM::factory('game', $id);
+		$game = ORM::factory('scenario', $id);
 		
-		$this->theme->content = new View('game/edit');
+		$this->theme->content = new View('scenario/edit');
 		$this->theme->content->id	= $game->id;
 		$this->theme->content->name	= $game->name;
 		$this->theme->render(TRUE);
@@ -62,13 +37,14 @@ class Game_Controller extends Admin_Controller {
 			if (isset($post['id'])) {
 				$id = $post['id'];	
 			}
-			$game = ORM::factory('game', $id);
+			$game = ORM::factory('scenario', $id);
 			$game->name		= $post['name'];
+			$game->game_id	= $post['game_id'];
 			$game->created	= date('Y-m-d h:i:s');
 			
 			if ($game->validate($post)) {
 				$game->save();
-				$msg = 'Game Saved!';
+				$msg = 'Scenario Saved!';
 				$type = 'success';	
 			}
 			else {
@@ -88,9 +64,9 @@ class Game_Controller extends Admin_Controller {
 	public function delete( $id = FALSE ) 
 	{
 		if ($id) {
-			$game	= ORM::factory('game', $id);
+			$game	= ORM::factory('scenario', $id);
 			if ($game->delete()) {
-				$msg	= 'Game deleted';
+				$msg	= 'Scenario deleted';
 				$type	= 'success';	
 			}
 			else {

@@ -9,7 +9,7 @@ class Tournament_Controller extends Admin_Controller {
 		$list = '<ol>';
 		foreach ($games as $game)
 		{
-			$list .= '<li>'.$game->name.' - (<a href="/tournament/edit/'.$game->id.'">Edit</a> - <a href="/tournament/delete/'.$game->id.'">Delete</a>)</li>';
+			$list .= '<li>'.$game->name.' - (<a href="/admin/tournament/edit/'.$game->id.'">Edit</a> - <a href="/admin/tournament/delete/'.$game->id.'">Delete</a>)</li>';
 		}
 		$list .= '</ol>';
 		
