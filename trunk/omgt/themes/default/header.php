@@ -10,9 +10,9 @@
 
 <link rel="stylesheet" href="/themes/default/css/grid.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="/themes/default/css/site.css" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" href="/themes/default/css/overcast/jquery-ui-1.7.2.custom.css" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/themes/default/js/cufon.js"></script>
+<script type="text/javascript" src="/themes/default/js/font.js"></script>
 <script type="text/javascript" src="/themes/default/js/omgt.js"></script>
 
 </head>
