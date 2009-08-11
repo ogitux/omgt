@@ -49,6 +49,35 @@ a:hover {
 	color: #529214;
 }
 
+/** Tabs **/
+.tabs {
+	clear:both;
+	overflow:hidden;
+	margin:0;
+	padding:0;
+	border-bottom:1px solid #444;
+}
+.tabs li {
+	list-style:none; 
+	float:left; 
+}
+.tabs li a {
+	display:block;
+	text-decoration:none!important;
+	color:#FFF;
+	background:#ddd;
+	padding:4px;
+}
+.tabs li a:hover {
+	color:#FFF;
+	background:#111;
+}
+
+.tabs .selected {
+	background-color: #fff;
+	color: #444;
+}
+
 /** ID's **/
 #header {
 	color:#DEE8F3;
@@ -89,6 +118,10 @@ a:hover {
 #menu ol li a small {
 	display:block;
 	line-height:0;
+}
+
+#content {
+	background-color: #fff;
 }
 
 #footer {

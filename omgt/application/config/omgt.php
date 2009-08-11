@@ -1,5 +1,3 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
-/**
- * Themes
- */
-$config['theme'] = 'default';
+$config['site_name']	= 'Your team site';
+$config['theme']		= 'default';

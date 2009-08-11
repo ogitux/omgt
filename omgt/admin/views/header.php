@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
-<meta name="author" content="Carlos Elias, Alvaro Veliz" />
-<meta name="description" content="Ofrece o Busca un trabajo esporádico mediante twitter y pituto.net" />
+<meta name="author" content="Alvaro Veliz" />
+<meta name="description" content="Open Manager for Game Tournaments" />
 <meta name="keywords" content="" />
 <meta name="robots" content="index, follow" />
 <title>OMGT</title>
@@ -14,6 +14,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/admin/js/setup.js"></script>
+<script type="text/javascript" src="/admin/js/jquery.idtabs.js"></script>
 
 </head>
 <body>

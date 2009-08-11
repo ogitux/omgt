@@ -21,4 +21,8 @@ class Omgt_Controller extends Controller {
 		$this->theme->render(TRUE);		
 	}
 	
+	public function _get_title()
+	{
+		return $this->theme->title = Kohana::config('omgt.site_name');
+	}
 }
