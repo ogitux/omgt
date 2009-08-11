@@ -1,9 +1,18 @@
-body {
-	background: url(../images/bg.jpg) center 0pt no-repeat;
+* {
+	margin: 0;
+}
+html, body {
+	background: url(../images/bg.jpg) center 0pt fixed;
 	color:#ddd;
 }
+html {
+	background: none;
+}
 .container {
-	margin-top:-6px !important;
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: -6px auto -42px; /* the bottom margin is the negative value of the footer's height */
 }
 #menu {
 	background: #191C16;
@@ -32,4 +41,26 @@ body {
 #menu ul li a:hover {
 	color:#fff;
 	background: #56634C;
+}
+#content {
+	background: #111;
+	opacity:.8;
+	border-radius:0 0 5px 5px;
+	-moz-border-radius:0 0 5px 5px;
+	margin-bottom:55px;
+}
+.inner {
+	padding:15px;
+}
+#footer {
+	height: 42px; /* .push must be the same height as .footer */
+	clear:both;
+	text-align:center;
+	color:#1A2214;
+}
+#footer a {
+	color:#1A2214;
+}
+#footer a:hover {
+	color:#fff;
 }
