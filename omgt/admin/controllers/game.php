@@ -14,15 +14,19 @@ class Game_Controller extends Admin_Controller {
 		$game_list .= '</ol>';
 		
 		$scenarios = ORM::factory('scenario')->find_all();
-		$scenario_list = '<ol>';
+		grid::add_column('id');
+		grid::add_column('name');
+		
+/*		$scenario_list = '<ol>';
 		foreach ($scenarios as $scenario)
 		{
 			$scenario_list .= '<li>'.$scenario->name.' - (<a href="/admin/scenario/edit/'.$scenario->id.'">Edit</a> - <a href="/admin/scenario/delete/'.$scenario->id.'">Delete</a>)</li>';
 		}
 		$scenario_list .= '</ol>';
+*/
 		
 		$this->theme->content->game_list = $game_list;
-		$this->theme->content->scenario_list = $scenario_list;
+		$this->theme->content->scenario_list = grid::create_grid($scenarios);
 		$this->theme->render(TRUE);
 	}
 
