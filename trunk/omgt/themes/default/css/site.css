@@ -2,7 +2,7 @@
 	margin: 0;
 }
 html, body {
-	background: url(../images/bg.jpg) center 0pt fixed;
+	background: url(../images/bg.jpg) center 0pt scroll;
 	color:#ddd;
 }
 html {
