@@ -1,0 +1,35 @@
+body {
+	background: url(../images/bg.jpg) center 0pt no-repeat;
+	color:#ddd;
+}
+.container {
+	margin-top:-6px !important;
+}
+#menu {
+	background: #191C16;
+	overflow:hidden;
+	border-radius:5px 5px 0 0;
+	-moz-border-radius:5px 5px 0 0;
+	opacity:.8;
+}
+#menu ul {
+	margin:0;
+	padding:0;
+	float:left;
+}
+#menu ul li {
+	float:left;
+	list-style:none;
+}
+#menu ul li a {
+	display:block;
+	text-decoration:none;
+	padding:5px 15px;
+	text-transform:uppercase;
+	color:#eee;
+	font-weight:bold;
+}
+#menu ul li a:hover {
+	color:#fff;
+	background: #56634C;
+}
